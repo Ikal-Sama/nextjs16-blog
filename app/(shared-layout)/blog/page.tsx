@@ -5,7 +5,6 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { api } from "@/convex/_generated/api"
 import { fetchQuery } from "convex/nextjs"
 import { Metadata } from "next"
-import { cacheLife, cacheTag } from "next/cache"
 import Image from "next/image"
 import Link from "next/link"
 import { connection } from "next/server"
@@ -29,17 +28,18 @@ export default function BlogPage() {
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Our Blog</h1>
                 <p className="pt-4 max-w-2xl mx-auto text-xl text-muted-foreground">Insights, thoughts, and trends from our team.</p>
             </div>
-            {/* <Suspense fallback={<SkeletonLoadingUi />}> */}
-            <LoadBlogList />
-            {/* </Suspense> */}
+            <Suspense fallback={<SkeletonLoadingUi />}>
+                <LoadBlogList />
+            </Suspense>
         </div>
     )
 }
 
 async function LoadBlogList() {
-    'use cache';
-    cacheLife("hours");
-    cacheTag('blog')
+    // 'use cache';
+    // cacheLife("hours");
+    // cacheTag('blog')
+    await connection()
     const data = await fetchQuery(api.posts.getPosts)
     return (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
