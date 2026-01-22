@@ -67,7 +67,7 @@ export default function CreatePage() {
                                 control={form.control}
                                 render={({ field, fieldState }) => (
                                     <Field>
-                                        <FieldLabel>Full Name</FieldLabel>
+                                        <FieldLabel>Content</FieldLabel>
                                         <Textarea aria-invalid={fieldState.invalid} placeholder="Write your content here..." {...field} />
                                         {fieldState.invalid && (
                                             <FieldError errors={[fieldState.error]} />

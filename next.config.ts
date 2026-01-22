@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
         port: ''
       },
       {
-        hostname: 'silent-ermine-991.convex.cloud',
+        hostname: 'trustworthy-bear-105.convex.cloud',
         protocol: 'https',
         port: ''
       }
